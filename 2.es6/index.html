@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // class MyFn {};
+        // let mf = new MyFn();
+        // let map = new Map();
+        // map的key可以是对象也可以是值
+        // map.set(mf, "ok")//有map mf就不会被销毁 没有就会被销毁
+        // mf = null
+        // console.log(map);
+
+
+        class MyFn {};
+        let mf = new MyFn();
+        //WeakMap key只能是对象 弱引用 (如果变量被清空了,变量就会被回收,不会导致内存泄漏)
+        let map = new WeakMap();
+        map.set(mf, "ok")
+        mf = null
+        console.log(map);
+    </script>
+</body>
+
+</html>
