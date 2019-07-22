@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script>
+        let channel = new MessageChannel();
+        let port1 = channel.port1;
+        let port2 = channel.port2;
+
+
+        setTimeout(() => {
+            console.log("settimeout")
+        })
+
+        // let mutationObserver = new MutationObserver(function() {
+        //     console.log(container.children); //异步的 子节点加完之后触发
+        // })
+        // mutationObserver.observe(container, {
+        //     childList: true //监控 子节点
+        // })
+
+        for (let i = 0; i < 10; i++) {
+            container.appendChild(document.createElement('p'));
+        }
+        for (let i = 0; i < 10; i++) {
+            container.appendChild(document.createElement('p'));
+        }
+        for (let i = 0; i < 10; i++) {
+            container.appendChild(document.createElement('p'));
+        }
+    </script>
+</body>
+
+</html>
