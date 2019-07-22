@@ -11,14 +11,26 @@
 <body>
     <div id="container"></div>
     <script>
-        let channel = new MessageChannel();
-        let port1 = channel.port1;
-        let port2 = channel.port2;
+        //webworker (工作线程:只能计算使用 并不能操作DOM) 单独开启一条线程
+        let worker = new Worker("./worker.js");
+        //线程之间的通信 postmessage onmessage
+        //serviceworker
+        worker.onmessage = function(e) {
+            console.log(e.data)
+        }
+        console.log("ok"); //不会阻塞主线程
 
+        // let channel = new MessageChannel();
+        // let port1 = channel.port1;
+        // let port2 = channel.port2;
+        // port2.postMessage("hello");
+        // port1.onmessage = function(e) {
+        //     console.log(e.data)
+        // }
 
-        setTimeout(() => {
-            console.log("settimeout")
-        })
+        // setTimeout(() => {
+        //     console.log("settimeout")
+        // })
 
         // let mutationObserver = new MutationObserver(function() {
         //     console.log(container.children); //异步的 子节点加完之后触发
